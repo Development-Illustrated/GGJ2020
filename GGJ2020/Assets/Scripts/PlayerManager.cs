@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
 
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : NetworkedBehaviour
 {
     public delegate void OnHealthChangeDelegate(int health);
     public event OnHealthChangeDelegate OnHealthChange;
@@ -17,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float turnSpeed = 2f;
     [SerializeField] private bool debugMeBruda;
 
+    public GameObject camera;
     private float groundDistance;
 
     private int _health = 100;
@@ -59,7 +61,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        if (this.isLocalPlayer)
+        if (this.IsLocalPlayer)
         {
             camera.active = true;
         }
@@ -140,6 +142,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
+        camera.active = false;
         controls = new PlayerInputActions();
     }
 
