@@ -11,9 +11,14 @@ public class PlayerManager : MonoBehaviour
     public delegate void OnStateChangeDelegate(playerState state);
     public event OnStateChangeDelegate OnStateChange;
 
+    [SerializeField] LayerMask groundLayers;
     [SerializeField] private float movementAcceleration = 20f;
     [SerializeField] private float maxSpeed = 30f;
     [SerializeField] private float turnSpeed = 2f;
+    [SerializeField] private bool debugMeBruda;
+
+    private float groundDistance;
+
     private int _health = 100;
     private playerState _currentState = playerState.IS_IDLE;
     public int health
@@ -55,6 +60,7 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
+        groundDistance = GetComponentInChildren<Collider>().bounds.extents.y;
     }
     
     void Update()
@@ -104,16 +110,25 @@ public class PlayerManager : MonoBehaviour
     
     private void Move(Vector2 moveInput)
     {
-        // Forward/Backward
-        if(rb.velocity.magnitude < maxSpeed)
+        if(IsGrounded())
         {
-            rb.AddForce(transform.forward * moveInput.y * movementAcceleration);
-        }
+            // Forward/Backward
+            if(rb.velocity.magnitude < maxSpeed)
+            {
+                rb.AddForce(transform.forward * moveInput.y * movementAcceleration);
+            }
 
-        transform.Rotate(new Vector3 { y = moveInput.x * turnSpeed });
+            transform.Rotate(new Vector3 { y = moveInput.x * turnSpeed });
+        }
     }
 
     #region HOUSEKEEPING
+
+    private bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, groundDistance + 0.1f);
+    }
+
     private void Awake()
     {
         controls = new PlayerInputActions();
