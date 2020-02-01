@@ -60,8 +60,9 @@ public class BuilderController : MonoBehaviour
         SelectedAttachPoint = AvailableAttachPoints[currentAttachPointIndex];
         if(SelectedAttachPoint.attachment != null)
         {
-            CurrentAttachment.
+            CurrentAttachment = SelectedAttachPoint.attachment.gameObject;
         }
+        
         SelectedAttachPoint.GetComponent<MeshRenderer>().material.color = AttachPointHighlightColor;
 
     }
