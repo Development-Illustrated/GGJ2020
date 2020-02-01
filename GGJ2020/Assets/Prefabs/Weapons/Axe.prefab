@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 5902421974398268341}
   - component: {fileID: 3570267996777018719}
   - component: {fileID: 5220312611454678190}
-  - component: {fileID: 6479643408637577421}
+  - component: {fileID: 1925515892}
+  - component: {fileID: 1925515893}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -33972,13 +33973,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponHealth: 0
+  weight: 0
   damage: 20
-  lastAttackTime: 0
+  nextMinAttackTime: 0
   attackTimeTracker: 0
-  swingDelay: 0.25
-  attackCooldown: 1
-  swingSpeed: 0
-  rigidBody: {fileID: 0}
+  attackCooldown: 3
 --- !u!54 &5220312611454678190
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33988,15 +33987,50 @@ Rigidbody:
   m_GameObject: {fileID: 4232462353607686187}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 10
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6479643408637577421
-BoxCollider:
+--- !u!59 &1925515892
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4232462353607686187}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: -0.13, y: 0.2, z: 0}
+  m_Axis: {x: 1, y: 0, z: -90}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -2.4026566, y: 1.719352, z: -2.0659282}
+  m_UseSpring: 1
+  m_Spring:
+    spring: 15
+    damper: 0.5
+    targetPosition: -50
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 1000
+    force: 500
+    freeSpin: 0
+  m_UseLimits: 1
+  m_Limits:
+    min: -50
+    max: 100
+    bounciness: 0.5
+    bounceMinVelocity: 100
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 1
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!64 &1925515893
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -34005,6 +34039,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9723427, y: 1.4649129, z: 0.30000007}
-  m_Center: {x: 0.18617141, y: 2.271232, z: -0.000000059604645}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 0}
