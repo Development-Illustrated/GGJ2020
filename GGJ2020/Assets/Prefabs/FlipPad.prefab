@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1394961186316293902}
   - component: {fileID: 2436986310621084718}
   - component: {fileID: 844095715830451595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8696139353504713331}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FlipPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +663,8 @@ GameObject:
   - component: {fileID: 6796361843232889805}
   - component: {fileID: 8879477219554794336}
   - component: {fileID: 326457741706512632}
-  m_Layer: 0
+  - component: {fileID: 55849235}
+  m_Layer: 8
   m_Name: Arch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,7 +679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8984299770134530301}
   m_LocalRotation: {x: -0.54167527, y: 0.45451948, z: -0.54167527, w: 0.45451948}
-  m_LocalPosition: {x: -2.06, y: -3.92, z: 2.73}
+  m_LocalPosition: {x: -2.06, y: -3.9, z: 2.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8696139353504713331}
@@ -1780,7 +1781,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
 --- !u!54 &8879477219554794336
@@ -1810,18 +1811,18 @@ HingeJoint:
   m_Anchor: {x: -4, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -2.0599995, y: 0.01923132, z: 2.035407}
-  m_UseSpring: 0
+  m_ConnectedAnchor: {x: 9.200001, y: 0.0492313, z: 2.035407}
+  m_UseSpring: 1
   m_Spring:
-    spring: 0
+    spring: 100
     damper: 0
     targetPosition: 0
-  m_UseMotor: 0
+  m_UseMotor: 1
   m_Motor:
-    targetVelocity: 0
-    force: 0
+    targetVelocity: 150
+    force: 150
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_Limits:
     min: 0
     max: 90
@@ -1834,3 +1835,16 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &55849235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8984299770134530301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604c0ec9e007e4a6c9ed1786a0f602e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumbBackForce: 4

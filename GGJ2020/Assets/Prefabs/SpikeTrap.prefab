@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1565890512977128962}
+  - component: {fileID: 1375604537}
   m_Layer: 0
   m_Name: SpikeTrap
   m_TagString: Untagged
@@ -40,6 +41,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1375604537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565890512977128961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584d7b898771b43acb957f3b774517fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapPad: {fileID: 1565890513243814146}
 --- !u!1 &1565890513243814146
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,6 +678,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1565890512977128962}
     m_Modifications:
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: raiseSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: trapPad
+      value: 
+      objectReference: {fileID: 1565890513243814146}
     - target: {fileID: 281935543490240417, guid: 16eea87e9acb74de8b02034065d59fac,
         type: 3}
       propertyPath: m_Name
@@ -749,6 +773,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1565890512977128962}
     m_Modifications:
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: raiseSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: trapPad
+      value: 
+      objectReference: {fileID: 1565890513243814146}
     - target: {fileID: 281935543490240417, guid: 16eea87e9acb74de8b02034065d59fac,
         type: 3}
       propertyPath: m_Name
@@ -834,6 +868,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1565890512977128962}
     m_Modifications:
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: raiseSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: trapPad
+      value: 
+      objectReference: {fileID: 1565890513243814146}
     - target: {fileID: 281935543490240417, guid: 16eea87e9acb74de8b02034065d59fac,
         type: 3}
       propertyPath: m_Name
@@ -919,6 +963,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1565890512977128962}
     m_Modifications:
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: raiseSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: trapPad
+      value: 
+      objectReference: {fileID: 1565890513243814146}
     - target: {fileID: 281935543490240417, guid: 16eea87e9acb74de8b02034065d59fac,
         type: 3}
       propertyPath: m_Name
@@ -1004,6 +1058,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1565890512977128962}
     m_Modifications:
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: raiseSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: trapPad
+      value: 
+      objectReference: {fileID: 1565890513243814146}
     - target: {fileID: 281935543490240417, guid: 16eea87e9acb74de8b02034065d59fac,
         type: 3}
       propertyPath: m_Name
@@ -1089,6 +1153,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1565890512977128962}
     m_Modifications:
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: raiseSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: trapPad
+      value: 
+      objectReference: {fileID: 1565890513243814146}
     - target: {fileID: 281935543490240417, guid: 16eea87e9acb74de8b02034065d59fac,
         type: 3}
       propertyPath: m_Name
@@ -1174,6 +1248,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1565890512977128962}
     m_Modifications:
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: raiseSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: trapPad
+      value: 
+      objectReference: {fileID: 1565890513243814146}
     - target: {fileID: 281935543490240417, guid: 16eea87e9acb74de8b02034065d59fac,
         type: 3}
       propertyPath: m_Name
@@ -1259,6 +1343,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1565890512977128962}
     m_Modifications:
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: raiseSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: trapPad
+      value: 
+      objectReference: {fileID: 1565890513243814146}
     - target: {fileID: 281935543490240417, guid: 16eea87e9acb74de8b02034065d59fac,
         type: 3}
       propertyPath: m_Name
@@ -1344,6 +1438,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1565890512977128962}
     m_Modifications:
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: raiseSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6786465761536939935, guid: 16eea87e9acb74de8b02034065d59fac,
+        type: 3}
+      propertyPath: trapPad
+      value: 
+      objectReference: {fileID: 1565890513243814146}
     - target: {fileID: 281935543490240417, guid: 16eea87e9acb74de8b02034065d59fac,
         type: 3}
       propertyPath: m_Name
