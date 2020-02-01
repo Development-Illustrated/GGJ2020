@@ -8,8 +8,13 @@ public class BuilderController : MonoBehaviour
     [SerializeField] public List<Chasis> AvailableChasis;
 
     private int currentChasisIndex = 0;
+    private int currentAttachmentIndex = 0;
 
     private GameObject CurrentChasis;
+    private GameObject CurrentAttachment;
+
+    private Transform SelectedAttachPoint;
+
 
     public void OnClickChasis()
     {
@@ -24,7 +29,14 @@ public class BuilderController : MonoBehaviour
 
     public void OnClickAttachment()
     {
-        AddAttachment(AvailableAttachments[0]);
+        Debug.Log("Current attachment index: " + currentAttachmentIndex);
+        AddAttachment(AvailableAttachments[currentAttachmentIndex]);
+        currentAttachmentIndex += 1;
+        if(currentAttachmentIndex > AvailableAttachments.Count-1)
+        {
+            currentAttachmentIndex = 0;
+        }
+        AddAttachment(AvailableAttachments[currentAttachmentIndex]);
     }
 
     private void SelectChasis(Chasis chasis)
@@ -43,8 +55,12 @@ public class BuilderController : MonoBehaviour
     {
         if(CurrentChasis)
         {
-            GameObject newAttachment = Instantiate(attachment.gameObject);
-            newAttachment.GetComponent<Attachment>().Attach(CurrentChasis.GetComponent<Chasis>().AvailableAttachPoints[0]);
+            if(CurrentAttachment)
+            {
+                Destroy(CurrentAttachment);
+            }
+            this.CurrentAttachment = Instantiate(attachment.gameObject);
+            this.CurrentAttachment.GetComponent<Attachment>().Attach(CurrentChasis.GetComponent<Chasis>().AvailableAttachPoints[0]);
         }
     }
 
@@ -53,20 +69,4 @@ public class BuilderController : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     if(Input.GetKeyDown(KeyCode.X))
-    //     {
-    //         Debug.Log("Key code x read");
-    //         SelectChasis(AvailableChasis[0]);
-    //     }
-
-    //     if(Input.GetKeyDown(KeyCode.Y))
-    //     {
-    //         Debug.Log("Key code Y has been pressed");
-    //         AddAttachment(AvailableAttachments[0]);
-    //     }
-    // }
 }
