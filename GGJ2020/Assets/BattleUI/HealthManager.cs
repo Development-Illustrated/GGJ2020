@@ -5,18 +5,21 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    public int maxWidth = 425;
-    public int currentWidth = 300;
+    private PlayerManager _player;
+    [SerializeField] private int maxWidth = 425;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _player = GameObject.FindObjectOfType<PlayerManager>();
+        _player.OnHealthChange += UpdateHealthBar;
+
+        this.GetComponent<RectTransform>().sizeDelta = new Vector2(maxWidth, 45);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void UpdateHealthBar(int health)
     {
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2(currentWidth, 45);
+        this.GetComponent<RectTransform>().sizeDelta = new Vector2((maxWidth / 100) * health, 45);
     }
 }

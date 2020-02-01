@@ -5,18 +5,47 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public delegate void OnHealthChangeDelegate(int health);
+    public event OnHealthChangeDelegate OnHealthChange;
+
+    public delegate void OnStateChangeDelegate(playerState state);
+    public event OnStateChangeDelegate OnStateChange;
+
     [SerializeField] private float movementSpeed = 20f;
     [SerializeField] private float turnSpeed = 2f;
-    [SerializeField] private int health = 100;
+    private int _health = 100;
+    private playerState _currentState = playerState.IS_IDLE;
+    public int health
+    {
+        get { return _health; }
+        set
+        {
+            if (_health == value) return;
+            _health = value;
+            if (OnHealthChange != null)
+                OnHealthChange(_health);
+        }
+    }
     [SerializeField] private int maxHealth = 100;
     
     private Rigidbody rb;
     private PlayerInputActions controls = null;
     private Vector2 moveInput;
 
-    public playerState currentState;
+    public playerState currentState
+    {
+        get { return _currentState; }
+        set
+        {
+            if (_currentState == value) return;
+            _currentState = value;
+            if (OnStateChange != null)
+                OnStateChange(_currentState);
+        }
+    }
     public enum playerState
     {
+        IS_IDLE,
         IS_READY,
         IS_DEAD,
         IS_ATTACKING
@@ -30,6 +59,11 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         moveInput = controls.PlayerActions.Move.ReadValue<Vector2>();
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            takeDamage(1);
+        }
     }
 
     private void FixedUpdate()
@@ -70,7 +104,6 @@ public class PlayerManager : MonoBehaviour
     private void Move(Vector2 moveInput)
     {
         rb.AddForce(transform.forward * moveInput.y * movementSpeed);
-
         transform.Rotate(new Vector3 { y = moveInput.x * turnSpeed });
     }
 
