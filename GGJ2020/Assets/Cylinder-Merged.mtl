@@ -1,0 +1,8 @@
+newmtl Ground
+Kd 0.8490566 0.8490566 0.8490566
+d 1
+
+newmtl New_Material
+Kd 0.3867925 0.3867925 0.3867925
+d 1
+
