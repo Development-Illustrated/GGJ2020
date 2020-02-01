@@ -11,7 +11,8 @@ public class PlayerManager : MonoBehaviour
     public delegate void OnStateChangeDelegate(playerState state);
     public event OnStateChangeDelegate OnStateChange;
 
-    [SerializeField] private float movementSpeed = 20f;
+    [SerializeField] private float movementAcceleration = 20f;
+    [SerializeField] private float maxSpeed = 30f;
     [SerializeField] private float turnSpeed = 2f;
     private int _health = 100;
     private playerState _currentState = playerState.IS_IDLE;
@@ -103,7 +104,12 @@ public class PlayerManager : MonoBehaviour
     
     private void Move(Vector2 moveInput)
     {
-        rb.AddForce(transform.forward * moveInput.y * movementSpeed);
+        // Forward/Backward
+        if(rb.velocity.magnitude < maxSpeed)
+        {
+            rb.AddForce(transform.forward * moveInput.y * movementAcceleration);
+        }
+
         transform.Rotate(new Vector3 { y = moveInput.x * turnSpeed });
     }
 
