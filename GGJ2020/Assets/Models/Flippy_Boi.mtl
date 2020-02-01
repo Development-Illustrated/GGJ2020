@@ -1,0 +1,9 @@
+newmtl BotBody
+Kd 0.6132076 0.5871752 0.5871752
+d 1
+
+newmtl ProBuilderDefault
+map_Kd GridBox_Default.png
+Kd 1 1 1
+d 1
+

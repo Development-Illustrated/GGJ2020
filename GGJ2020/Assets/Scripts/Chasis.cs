@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Chasis : MonoBehaviour
 {
-    [SerializeField] public List<Transform> AvailableAttachPoints;
+    [SerializeField] public List<AttachPointSelection> AvailableAttachPoints;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {       
         
     }
 
