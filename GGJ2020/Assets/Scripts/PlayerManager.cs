@@ -120,13 +120,18 @@ public class PlayerManager : MonoBehaviour
 
             transform.Rotate(new Vector3 { y = moveInput.x * turnSpeed });
         }
+        else
+        {
+            if(debugMeBruda)Debug.Log("Not grounded!");
+        }
     }
 
     #region HOUSEKEEPING
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, -Vector3.up, groundDistance + 0.1f);
+        if(debugMeBruda)Debug.DrawRay(transform.position, -Vector3.up *5f, Color.black, 1f);
+        return Physics.Raycast(transform.position, -transform.up, groundDistance + 0.2f, groundLayers);
     }
 
     private void Awake()
