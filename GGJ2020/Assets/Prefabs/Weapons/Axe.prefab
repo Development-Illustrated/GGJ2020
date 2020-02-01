@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5902421974398268341}
   - component: {fileID: 3570267996777018719}
   - component: {fileID: 5220312611454678190}
+  - component: {fileID: 6479643408637577421}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -33970,7 +33971,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ca7085815309649b2bd158d44809e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponHealth: 0
   damage: 20
+  lastAttackTime: 0
+  attackTimeTracker: 0
   swingDelay: 0.25
   attackCooldown: 1
   swingSpeed: 0
@@ -33991,3 +33995,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6479643408637577421
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4232462353607686187}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9723427, y: 1.4649129, z: 0.30000007}
+  m_Center: {x: 0.18617141, y: 2.271232, z: -0.000000059604645}

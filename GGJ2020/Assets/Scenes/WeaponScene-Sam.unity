@@ -228,6 +228,11 @@ PrefabInstance:
       propertyPath: attackCooldown
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3570267996777018719, guid: 48b283bf3ebb76d4ab4d4f735e8c3add,
+        type: 3}
+      propertyPath: swingSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4232462353607686187, guid: 48b283bf3ebb76d4ab4d4f735e8c3add,
         type: 3}
       propertyPath: m_Name
@@ -298,7 +303,18 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6479643408637577421, guid: 48b283bf3ebb76d4ab4d4f735e8c3add,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151592478449032944, guid: 48b283bf3ebb76d4ab4d4f735e8c3add,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1119940454}
+    m_RemovedComponents:
+    - {fileID: 6479643408637577421, guid: 48b283bf3ebb76d4ab4d4f735e8c3add, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48b283bf3ebb76d4ab4d4f735e8c3add, type: 3}
 --- !u!1 &963194225
 GameObject:
@@ -546,3 +562,58 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1925515891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4232462353607686187, guid: 48b283bf3ebb76d4ab4d4f735e8c3add,
+    type: 3}
+  m_PrefabInstance: {fileID: 753653462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!59 &1925515892
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925515891}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: -0.13, y: 0.2, z: 0}
+  m_Axis: {x: 1, y: 0, z: -90}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -2.4026566, y: 1.719352, z: -2.0659282}
+  m_UseSpring: 1
+  m_Spring:
+    spring: 15
+    damper: 0.5
+    targetPosition: -50
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 1000
+    force: 500
+    freeSpin: 0
+  m_UseLimits: 1
+  m_Limits:
+    min: -50
+    max: 100
+    bounciness: 0.5
+    bounceMinVelocity: 100
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 1
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!64 &1925515893
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925515891}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 1119940454}
