@@ -71,8 +71,11 @@ public class PlayerManager : NetworkedBehaviour
         rb = this.GetComponent<Rigidbody>();
         groundDistance = GetComponentInChildren<Collider>().bounds.extents.y;
         attachPoints = this.GetComponent<Chasis>().AvailableAttachPoints;
-        foreach(var attachPoint in attachPoints){
-            weaponsList.Add(attachPoint.GetComponent<AttachPointSelection>().attachment.GetComponent<BaseWeapon>());
+        foreach(AttachPointSelection attachPoint in attachPoints){
+            if(attachPoint.GetComponent<AttachPointSelection>())
+            {
+                weaponsList.Add(attachPoint.GetComponent<AttachPointSelection>().attachment.GetComponent<BaseWeapon>());
+            } 
         }
     }
     
