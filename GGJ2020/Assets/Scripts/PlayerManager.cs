@@ -150,7 +150,7 @@ public class PlayerManager : NetworkedBehaviour
     {
         currentState = playerState.IS_DEAD;
     }
-    
+
     private void Move(Vector2 moveInput)
     {
         if(IsGrounded())
