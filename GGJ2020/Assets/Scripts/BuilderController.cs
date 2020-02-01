@@ -9,11 +9,15 @@ public class BuilderController : MonoBehaviour
 
     private int currentChasisIndex = 0;
     private int currentAttachmentIndex = 0;
+    private int currentAttachPointIndex = 0;
 
     private GameObject CurrentChasis;
     private GameObject CurrentAttachment;
 
-    private Transform SelectedAttachPoint;
+    private AttachPointSelection SelectedAttachPoint;
+    private List<AttachPointSelection> AvailableAttachPoints;
+    public Color AttachPointHighlightColor;
+    private Color OGAttachColor = Color.red;
 
 
     public void OnClickChasis()
@@ -36,7 +40,30 @@ public class BuilderController : MonoBehaviour
         {
             currentAttachmentIndex = 0;
         }
-        AddAttachment(AvailableAttachments[currentAttachmentIndex]);
+    }
+
+    public void OnClickCycleAttachPoint()
+    {   
+        // Reset color on old attach point
+        if(SelectedAttachPoint)
+        {
+            SelectedAttachPoint.GetComponent<MeshRenderer>().material.color = OGAttachColor;
+        }
+
+        currentAttachPointIndex += 1;
+        if(currentAttachPointIndex > AvailableAttachPoints.Count-1)
+        {
+            currentAttachPointIndex = 0;
+        }
+
+        Debug.Log("Current attach point index: " + currentAttachPointIndex);
+        SelectedAttachPoint = AvailableAttachPoints[currentAttachPointIndex];
+        if(SelectedAttachPoint.attachment != null)
+        {
+            CurrentAttachment.
+        }
+        SelectedAttachPoint.GetComponent<MeshRenderer>().material.color = AttachPointHighlightColor;
+
     }
 
     private void SelectChasis(Chasis chasis)
@@ -49,18 +76,21 @@ public class BuilderController : MonoBehaviour
         this.CurrentChasis = Instantiate(chasis.gameObject);
         this.CurrentChasis.transform.parent = transform;
         this.CurrentChasis.transform.position = transform.position;
+        this.AvailableAttachPoints = this.CurrentChasis.GetComponent<Chasis>().AvailableAttachPoints;
     }
 
     private  void AddAttachment(Attachment attachment)
     {
         if(CurrentChasis)
         {
-            if(CurrentAttachment)
+            if(SelectedAttachPoint.attachment)
             {
                 Destroy(CurrentAttachment);
+                SelectedAttachPoint.attachment = null;
             }
             this.CurrentAttachment = Instantiate(attachment.gameObject);
-            this.CurrentAttachment.GetComponent<Attachment>().Attach(CurrentChasis.GetComponent<Chasis>().AvailableAttachPoints[0]);
+            this.CurrentAttachment.GetComponent<Attachment>().Attach(CurrentChasis.GetComponent<Chasis>().AvailableAttachPoints[currentAttachPointIndex].transform);
+            SelectedAttachPoint.attachment = this.CurrentAttachment.GetComponent<Attachment>();
         }
     }
 
