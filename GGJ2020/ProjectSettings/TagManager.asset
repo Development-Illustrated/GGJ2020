@@ -13,8 +13,9 @@ TagManager:
   - UI
   - 
   - 
+  - PlayerCamera
+  - MinimapCamera
   - Hazard
-  - 
   - 
   - 
   - 
