@@ -67,7 +67,6 @@ public class PlayerManager : MonoBehaviour
     {
         moveInput = controls.PlayerActions.Move.ReadValue<Vector2>();
 
-        Debug.Log(moveInput);
         if (Input.GetKeyDown(KeyCode.X))
         {
             takeDamage(1);

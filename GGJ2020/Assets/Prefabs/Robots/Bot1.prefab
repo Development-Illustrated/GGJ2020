@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 2363704793658886892}
   m_Layer: 0
   m_Name: Bot1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -452,9 +452,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db129582dad4416b85bc2477370fc11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 0
   movementAcceleration: 400
   maxSpeed: 30
   turnSpeed: 2
+  debugMeBruda: 0
   maxHealth: 100
 --- !u!1001 &1334338211
 PrefabInstance:

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpikeTrap : MonoBehaviour
 {
-    public GameObject trapPad;
+    public GameObject spikeCollection;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +15,17 @@ public class SpikeTrap : MonoBehaviour
     {
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered!");
+        if (other.tag == "Player") {
+            spikeCollection.GetComponent<SpikeCollection>().StabIt();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player") {
+            spikeCollection.GetComponent<SpikeCollection>().UnstabIt();
+        }
     }
 }

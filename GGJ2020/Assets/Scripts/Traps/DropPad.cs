@@ -16,8 +16,10 @@ public class DropPad : MonoBehaviour
 
     }
 
-    void OnTriggerEnter (Collider a)
+    void OnTriggerEnter (Collider other)
     {
-        Instantiate(droppedItem, new Vector3(transform.position.x + 2.5f, 20, transform.position.z + 2.5f), Quaternion.identity);
+        if (other.tag == "Player") {
+            Instantiate(droppedItem, new Vector3(transform.position.x + 2.5f, 20, transform.position.z + 2.5f), Quaternion.identity);
+        }
     }
 }
