@@ -25,6 +25,30 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Weapons"",
+                    ""type"": ""Button"",
+                    ""id"": ""d3398c46-9080-4b29-b510-0f435f071b2d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Weapons1"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b7eefcf-cba8-411f-a941-4d91fec9d386"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Weapons2"",
+                    ""type"": ""Button"",
+                    ""id"": ""7496761a-a64f-4e5b-914a-25febf45ee70"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -137,6 +161,39 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c221f85f-7108-4048-9f48-d01b2cc8c9d5"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7b47831-439b-40c5-a1b3-bc8d01f2a756"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapons2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2bb6df57-29ba-44ce-9a84-f774eaace6a8"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapons1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -146,6 +203,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         // PlayerActions
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
+        m_PlayerActions_Weapons = m_PlayerActions.FindAction("Weapons", throwIfNotFound: true);
+        m_PlayerActions_Weapons1 = m_PlayerActions.FindAction("Weapons1", throwIfNotFound: true);
+        m_PlayerActions_Weapons2 = m_PlayerActions.FindAction("Weapons2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -196,11 +256,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_PlayerActions;
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Move;
+    private readonly InputAction m_PlayerActions_Weapons;
+    private readonly InputAction m_PlayerActions_Weapons1;
+    private readonly InputAction m_PlayerActions_Weapons2;
     public struct PlayerActionsActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActionsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerActions_Move;
+        public InputAction @Weapons => m_Wrapper.m_PlayerActions_Weapons;
+        public InputAction @Weapons1 => m_Wrapper.m_PlayerActions_Weapons1;
+        public InputAction @Weapons2 => m_Wrapper.m_PlayerActions_Weapons2;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -213,6 +279,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
+                @Weapons.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWeapons;
+                @Weapons.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWeapons;
+                @Weapons.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWeapons;
+                @Weapons1.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWeapons1;
+                @Weapons1.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWeapons1;
+                @Weapons1.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWeapons1;
+                @Weapons2.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWeapons2;
+                @Weapons2.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWeapons2;
+                @Weapons2.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnWeapons2;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -220,6 +295,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Weapons.started += instance.OnWeapons;
+                @Weapons.performed += instance.OnWeapons;
+                @Weapons.canceled += instance.OnWeapons;
+                @Weapons1.started += instance.OnWeapons1;
+                @Weapons1.performed += instance.OnWeapons1;
+                @Weapons1.canceled += instance.OnWeapons1;
+                @Weapons2.started += instance.OnWeapons2;
+                @Weapons2.performed += instance.OnWeapons2;
+                @Weapons2.canceled += instance.OnWeapons2;
             }
         }
     }
@@ -227,5 +311,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     public interface IPlayerActionsActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnWeapons(InputAction.CallbackContext context);
+        void OnWeapons1(InputAction.CallbackContext context);
+        void OnWeapons2(InputAction.CallbackContext context);
     }
 }
