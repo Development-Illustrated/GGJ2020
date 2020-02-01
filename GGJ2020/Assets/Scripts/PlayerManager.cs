@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using MLAPI;
 
-
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : NetworkedBehaviour
 {
     public delegate void OnHealthChangeDelegate(int health);
     public event OnHealthChangeDelegate OnHealthChange;
@@ -17,7 +18,11 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float turnSpeed = 2f;
     [SerializeField] private bool debugMeBruda;
 
+    public GameObject camera;
     private float groundDistance;
+
+    private List<AttachPointSelection> attachPoints;
+    private List<BaseWeapon> weaponsList;
 
     private int _health = 100;
     private playerState _currentState = playerState.IS_IDLE;
@@ -59,14 +64,21 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        if (this.IsLocalPlayer)
+        {
+            camera.active = true;
+        }
         rb = this.GetComponent<Rigidbody>();
         groundDistance = GetComponentInChildren<Collider>().bounds.extents.y;
+        attachPoints = this.GetComponent<Chasis>().AvailableAttachPoints;
+        foreach(var attachPoint in attachPoints){
+            weaponsList.Add(attachPoint.GetComponent<AttachPointSelection>().attachment.GetComponent<BaseWeapon>());
+        }
     }
     
     void Update()
     {
         moveInput = controls.PlayerActions.Move.ReadValue<Vector2>();
-
         if (Input.GetKeyDown(KeyCode.X))
         {
             takeDamage(1);
@@ -76,6 +88,34 @@ public class PlayerManager : MonoBehaviour
     private void FixedUpdate()
     {
         Move(moveInput);
+    }
+    public void OnWeapons(){
+        Debug.Log("Attack with weapon 1 ");
+        BaseWeapon weapon = getWeapon(0);
+        if(weapon){
+            weapon.attack();
+        }
+
+    }
+    public void OnWeapons1(){
+        BaseWeapon weapon = getWeapon(1);
+        if(weapon){
+            weapon.attack();
+        }
+    }
+    public void OnWeapons2(){
+        BaseWeapon weapon = getWeapon(2);
+        if(weapon){
+            weapon.attack();
+        }
+    }
+
+    private BaseWeapon getWeapon(int weaponNumber){
+        if(weaponsList.Count <= (attachPoints.Count + 1)){
+            return weaponsList[weaponNumber];
+        } else {
+            return null;
+        }
     }
 
     public void takeDamage(int damage)
@@ -120,17 +160,23 @@ public class PlayerManager : MonoBehaviour
 
             transform.Rotate(new Vector3 { y = moveInput.x * turnSpeed });
         }
+        else
+        {
+            if(debugMeBruda)Debug.Log("Not grounded!");
+        }
     }
 
     #region HOUSEKEEPING
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, -Vector3.up, groundDistance + 0.1f);
+        if(debugMeBruda)Debug.DrawRay(transform.position, -Vector3.up *5f, Color.black, 1f);
+        return Physics.Raycast(transform.position, -transform.up, groundDistance + 0.2f, groundLayers);
     }
 
     private void Awake()
     {
+        camera.active = false;
         controls = new PlayerInputActions();
     }
 

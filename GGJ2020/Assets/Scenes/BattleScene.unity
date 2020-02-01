@@ -129,32 +129,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 175223952, guid: 515ade2958464426b8388c73d71afe67, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.22975293
+      value: 0.22975291
       objectReference: {fileID: 0}
     - target: {fileID: 175223952, guid: 515ade2958464426b8388c73d71afe67, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000073651046
+      value: -0.0000007739559
       objectReference: {fileID: 0}
     - target: {fileID: 175223952, guid: 515ade2958464426b8388c73d71afe67, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000031947993
+      value: 0.000003203639
       objectReference: {fileID: 0}
     - target: {fileID: 346381437, guid: 515ade2958464426b8388c73d71afe67, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.22975293
+      value: 0.22975291
       objectReference: {fileID: 0}
     - target: {fileID: 346381437, guid: 515ade2958464426b8388c73d71afe67, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000073651046
+      value: -0.0000007739559
       objectReference: {fileID: 0}
     - target: {fileID: 346381437, guid: 515ade2958464426b8388c73d71afe67, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000031947993
-      objectReference: {fileID: 0}
-    - target: {fileID: 2363704793658886892, guid: 515ade2958464426b8388c73d71afe67,
-        type: 3}
-      propertyPath: debugMeBruda
-      value: 1
+      value: 0.000003203639
       objectReference: {fileID: 0}
     - target: {fileID: 7539034851683220464, guid: 515ade2958464426b8388c73d71afe67,
         type: 3}
@@ -215,6 +210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bot1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7539034851683220465, guid: 515ade2958464426b8388c73d71afe67,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515ade2958464426b8388c73d71afe67, type: 3}
@@ -1210,6 +1210,113 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1117058241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1117058243}
+  - component: {fileID: 1117058242}
+  - component: {fileID: 1117058244}
+  m_Layer: 0
+  m_Name: Network
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1117058242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117058241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1682170820, guid: 01701b64234b4d523d8045142cbc73fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DontDestroy: 1
+  RunInBackground: 1
+  LogLevel: 1
+  NetworkConfig:
+    ProtocolVersion: 0
+    NetworkTransport: {fileID: 1117058244}
+    RegisteredScenes:
+    - BattleScene
+    AllowRuntimeSceneChanges: 0
+    NetworkedPrefabs:
+    - Prefab: {fileID: 7539034851683220465, guid: 515ade2958464426b8388c73d71afe67,
+        type: 3}
+      PlayerPrefab: 1
+    PlayerPrefabHash:
+      Value: 1227787794011927125
+    CreatePlayerPrefab: 1
+    ReceiveTickrate: 64
+    MaxReceiveEventsPerTickRate: 500
+    EventTickrate: 64
+    MaxObjectUpdatesPerTick: -1
+    ClientConnectionBufferTimeout: 10
+    ConnectionApproval: 0
+    ConnectionData: 
+    SecondsHistory: 5
+    EnableTimeResync: 0
+    TimeResyncInterval: 30
+    EnableNetworkedVar: 1
+    EnsureNetworkedVarLengthSafety: 0
+    EnableSceneManagement: 1
+    ForceSamePrefabs: 1
+    UsePrefabSync: 0
+    RecycleNetworkIds: 1
+    NetworkIdRecycleDelay: 120
+    RpcHashSize: 0
+    LoadSceneTimeOut: 120
+    EnableMessageBuffering: 1
+    MessageBufferTimeout: 20
+    EnableEncryption: 0
+    SignKeyExchange: 0
+    ServerBase64PfxCertificate: 
+--- !u!4 &1117058243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117058241}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.249461, y: 12.9, z: 88.207306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1117058244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117058241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1554712238, guid: 01701b64234b4d523d8045142cbc73fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MessageBufferSize: 5120
+  MaxConnections: 100
+  ConnectAddress: 127.0.0.1
+  ConnectPort: 7777
+  ServerListenPort: 7777
+  ServerWebsocketListenPort: 8887
+  SupportWebsocket: 0
+  Channels: []
+  UseMLAPIRelay: 0
+  MLAPIRelayAddress: 184.72.104.138
+  MLAPIRelayPort: 8888
 --- !u!43 &1158899865
 Mesh:
   m_ObjectHideFlags: 0
