@@ -15,5 +15,10 @@ public class Attachment : MonoBehaviour
         transform.rotation = target;
 
         attachPoint.GetComponent<MeshRenderer>().enabled = false;
+
+        if(GetComponent<HingeJoint>() != null)
+        {
+            GetComponent<HingeJoint>().connectedAnchor = attachPoint.position;
+        }
     }
 }

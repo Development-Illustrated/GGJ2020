@@ -545,7 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AvailableAttachments:
   - {fileID: 456427441023956880, guid: 43f92cb57a292465cb61415922c26dbc, type: 3}
-  - {fileID: 456427441023956880, guid: ffecc979c33d6494ab8cbed6b766597a, type: 3}
+  - {fileID: -416789401125027685, guid: 48b283bf3ebb76d4ab4d4f735e8c3add, type: 3}
   AvailableChasis:
   - {fileID: 7539034851683220466, guid: 515ade2958464426b8388c73d71afe67, type: 3}
   - {fileID: 7539034851683220466, guid: 6f99e8cac0e4b4936bc67c6f0b8ba68e, type: 3}
