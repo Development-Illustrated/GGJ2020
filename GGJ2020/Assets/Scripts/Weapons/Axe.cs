@@ -29,7 +29,7 @@ public class Axe : BaseWeapon // Derived class
         if ((attackTimeTracker + Time.deltaTime) > (nextMinAttackTime)){
             //Activated motor to attack, and sets next possible time for an attack
             hinge.useMotor = true;
-            nextMinAttackTime = Time.time + attackCooldown;
+            nextMinAttackTime = 0 + attackCooldown;
         }
     }
 
