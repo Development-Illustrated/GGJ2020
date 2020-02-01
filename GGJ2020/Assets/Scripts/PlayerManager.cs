@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using MLAPI;
-
 
 public class PlayerManager : NetworkedBehaviour
 {
@@ -20,6 +20,9 @@ public class PlayerManager : NetworkedBehaviour
 
     public GameObject camera;
     private float groundDistance;
+
+    private List<AttachPointSelection> attachPoints;
+    private List<BaseWeapon> weaponsList;
 
     private int _health = 100;
     private playerState _currentState = playerState.IS_IDLE;
@@ -67,12 +70,15 @@ public class PlayerManager : NetworkedBehaviour
         }
         rb = this.GetComponent<Rigidbody>();
         groundDistance = GetComponentInChildren<Collider>().bounds.extents.y;
+        attachPoints = this.GetComponent<Chasis>().AvailableAttachPoints;
+        foreach(var attachPoint in attachPoints){
+            weaponsList.Add(attachPoint.GetComponent<AttachPointSelection>().attachment.GetComponent<BaseWeapon>());
+        }
     }
     
     void Update()
     {
         moveInput = controls.PlayerActions.Move.ReadValue<Vector2>();
-
         if (Input.GetKeyDown(KeyCode.X))
         {
             takeDamage(1);
@@ -82,6 +88,34 @@ public class PlayerManager : NetworkedBehaviour
     private void FixedUpdate()
     {
         Move(moveInput);
+    }
+    public void OnWeapons(){
+        Debug.Log("Attack with weapon 1 ");
+        BaseWeapon weapon = getWeapon(0);
+        if(weapon){
+            weapon.attack();
+        }
+
+    }
+    public void OnWeapons1(){
+        BaseWeapon weapon = getWeapon(1);
+        if(weapon){
+            weapon.attack();
+        }
+    }
+    public void OnWeapons2(){
+        BaseWeapon weapon = getWeapon(2);
+        if(weapon){
+            weapon.attack();
+        }
+    }
+
+    private BaseWeapon getWeapon(int weaponNumber){
+        if(weaponsList.Count <= (attachPoints.Count + 1)){
+            return weaponsList[weaponNumber];
+        } else {
+            return null;
+        }
     }
 
     public void takeDamage(int damage)
