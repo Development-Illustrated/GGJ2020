@@ -6,7 +6,7 @@ using MLAPI;
 
 public class PlayerManager : NetworkedBehaviour
 {
-    public Camera camera;
+    public GameObject camera;
     public delegate void OnHealthChangeDelegate(int health);
     public event OnHealthChangeDelegate OnHealthChange;
 
@@ -57,7 +57,7 @@ public class PlayerManager : NetworkedBehaviour
     {
         if (this.isLocalPlayer)
         {
-            camera.enabled = true;
+            camera.active = true;
         }
         rb = this.GetComponent<Rigidbody>();
     }
@@ -117,7 +117,7 @@ public class PlayerManager : NetworkedBehaviour
     private void Awake()
     {
         // Disable the camera
-        camera.enabled = false;
+        camera.active = false;
 
         controls = new PlayerInputActions();
     }

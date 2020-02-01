@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db129582dad4416b85bc2477370fc11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 7048395251248856621}
+  camera: {fileID: 7048395251517137452}
   movementSpeed: 400
   turnSpeed: 2
   maxHealth: 100
@@ -191,7 +191,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7048395251159406297}
-  m_LocalRotation: {x: 0.22975296, y: -0.0000007936946, z: 0.0000032082999, w: 0.973249}
+  m_LocalRotation: {x: 0.22975296, y: -0.0000007936945, z: 0.0000032082999, w: 0.973249}
   m_LocalPosition: {x: 0, y: 5.0000005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -260,7 +260,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7048395251248856623}
-  m_LocalRotation: {x: 0.22975296, y: -0.0000007936946, z: 0.0000032082999, w: 0.973249}
+  m_LocalRotation: {x: 0.22975296, y: -0.0000007936945, z: 0.0000032082999, w: 0.973249}
   m_LocalPosition: {x: 0, y: 5.0000005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
