@@ -19,10 +19,6 @@ public class FlipperTrap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(hinge.angle);
-        Debug.Log(hinge.limits.min + 1);
-        Debug.Log(hinge.angle <= (hinge.limits.min + 1));
         if (hinge.angle >= (hinge.limits.max - 10)) {
             hinge.useMotor = false;
             hinge.useSpring = true;
