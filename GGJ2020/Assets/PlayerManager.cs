@@ -71,7 +71,7 @@ public class PlayerManager : MonoBehaviour
     {
         rb.AddForce(transform.forward * moveInput.y * movementSpeed);
 
-        transform.Rotate(new Vector3 { y = moveInput.x * turnSpeed }.normalized);
+        transform.Rotate(new Vector3 { y = moveInput.x * turnSpeed });
     }
 
     #region HOUSEKEEPING
