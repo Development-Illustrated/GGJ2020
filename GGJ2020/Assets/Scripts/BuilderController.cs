@@ -7,11 +7,19 @@ public class BuilderController : MonoBehaviour
     [SerializeField] public List<Attachment> AvailableAttachments;
     [SerializeField] public List<Chasis> AvailableChasis;
 
+    private int currentChasisIndex = 0;
+
     private GameObject CurrentChasis;
 
     public void OnClickChasis()
     {
-        SelectChasis(AvailableChasis[0]);
+        Debug.Log("Current chasis index: " + currentChasisIndex);
+        SelectChasis(AvailableChasis[currentChasisIndex]);
+        currentChasisIndex += 1;
+        if(currentChasisIndex > AvailableChasis.Count-1)
+        {
+            currentChasisIndex = 0;
+        }
     }
 
     public void OnClickAttachment()
@@ -27,6 +35,8 @@ public class BuilderController : MonoBehaviour
         }
     
         this.CurrentChasis = Instantiate(chasis.gameObject);
+        this.CurrentChasis.transform.parent = transform;
+        this.CurrentChasis.transform.position = transform.position;
     }
 
     private  void AddAttachment(Attachment attachment)

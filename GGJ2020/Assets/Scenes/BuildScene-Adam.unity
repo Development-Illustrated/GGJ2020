@@ -547,6 +547,7 @@ MonoBehaviour:
   - {fileID: 456427441023956880, guid: 43f92cb57a292465cb61415922c26dbc, type: 3}
   AvailableChasis:
   - {fileID: 7539034851683220466, guid: 515ade2958464426b8388c73d71afe67, type: 3}
+  - {fileID: 7539034851683220466, guid: 6f99e8cac0e4b4936bc67c6f0b8ba68e, type: 3}
 --- !u!1 &871078305
 GameObject:
   m_ObjectHideFlags: 0
