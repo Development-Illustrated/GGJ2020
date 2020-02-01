@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using MLAPI;
 
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : NetworkedBehaviour
 {
+    public Camera camera;
     public delegate void OnHealthChangeDelegate(int health);
     public event OnHealthChangeDelegate OnHealthChange;
 
@@ -54,6 +55,10 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        if (this.isLocalPlayer)
+        {
+            camera.enabled = true;
+        }
         rb = this.GetComponent<Rigidbody>();
     }
     
@@ -111,6 +116,9 @@ public class PlayerManager : MonoBehaviour
     #region HOUSEKEEPING
     private void Awake()
     {
+        // Disable the camera
+        camera.enabled = false;
+
         controls = new PlayerInputActions();
     }
 
