@@ -23,7 +23,7 @@ public abstract class BaseWeapon : MonoBehaviour
     public virtual void attack(){}
 
     public void takeDamage(double damageTaken){
-        if((this.weaponHealth -= damageTaken) < 0){
+        if(!((this.weaponHealth - damageTaken) < 0)){
             this.weaponHealth -= damageTaken;
         } else {
             this.weaponHealth = 0;

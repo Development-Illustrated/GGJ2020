@@ -43,6 +43,6 @@ public class Axe : BaseWeapon // Derived class
     private void OnCollisionEnter(Collision collision) {
         //calculate damage by modifier and speed
         base.hitTarget(collision.gameObject, this.damage);
-
+        hinge.useMotor = false;
     }
 }
