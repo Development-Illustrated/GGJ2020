@@ -14,16 +14,16 @@ public class ListController : MonoBehaviour
     
         // 1. Get the data to be displayed
         Components = new ArrayList (){
-            new Component(ComponentImages[0], "Hammer"),
-            new Component(ComponentImages[0], "Axe"),
-            new Component(ComponentImages[0], "Sword")
+            new UIComponent(ComponentImages[0], "Hammer"),
+            new UIComponent(ComponentImages[0], "Axe"),
+            new UIComponent(ComponentImages[0], "Sword")
         };
         
         // 2. Iterate through the data, 
         //	  instantiate prefab, 
         //	  set the data, 
         //	  add it to panel
-        foreach(Component c in Components){
+        foreach(UIComponent c in Components){
         GameObject newComponent = Instantiate(ListItemPrefab) as GameObject;
         ListItemController controller = newComponent.GetComponent<ListItemController>();
         controller.Icon.sprite = c.Icon;
