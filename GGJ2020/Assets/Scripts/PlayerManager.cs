@@ -1,20 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MLAPI;
 
 
-public class PlayerManager : NetworkedBehaviour
+public class PlayerManager : MonoBehaviour
 {
-    public GameObject camera;
     public delegate void OnHealthChangeDelegate(int health);
     public event OnHealthChangeDelegate OnHealthChange;
 
     public delegate void OnStateChangeDelegate(playerState state);
     public event OnStateChangeDelegate OnStateChange;
 
-    [SerializeField] private float movementSpeed = 20f;
+    [SerializeField] LayerMask groundLayers;
+    [SerializeField] private float movementAcceleration = 20f;
+    [SerializeField] private float maxSpeed = 30f;
     [SerializeField] private float turnSpeed = 2f;
+    [SerializeField] private bool debugMeBruda;
+
+    private float groundDistance;
+
     private int _health = 100;
     private playerState _currentState = playerState.IS_IDLE;
     public int health
@@ -60,6 +64,7 @@ public class PlayerManager : NetworkedBehaviour
             camera.active = true;
         }
         rb = this.GetComponent<Rigidbody>();
+        groundDistance = GetComponentInChildren<Collider>().bounds.extents.y;
     }
     
     void Update()
@@ -109,16 +114,32 @@ public class PlayerManager : NetworkedBehaviour
     
     private void Move(Vector2 moveInput)
     {
-        rb.AddForce(transform.forward * moveInput.y * movementSpeed);
-        transform.Rotate(new Vector3 { y = moveInput.x * turnSpeed });
+        if(IsGrounded())
+        {
+            // Forward/Backward
+            if(rb.velocity.magnitude < maxSpeed)
+            {
+                rb.AddForce(transform.forward * moveInput.y * movementAcceleration);
+            }
+
+            transform.Rotate(new Vector3 { y = moveInput.x * turnSpeed });
+        }
+        else
+        {
+            if(debugMeBruda)Debug.Log("Not grounded!");
+        }
     }
 
     #region HOUSEKEEPING
+
+    private bool IsGrounded()
+    {
+        if(debugMeBruda)Debug.DrawRay(transform.position, -Vector3.up *5f, Color.black, 1f);
+        return Physics.Raycast(transform.position, -transform.up, groundDistance + 0.2f, groundLayers);
+    }
+
     private void Awake()
     {
-        // Disable the camera
-        camera.active = false;
-
         controls = new PlayerInputActions();
     }
 
