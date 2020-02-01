@@ -9,7 +9,17 @@ public class BuilderController : MonoBehaviour
 
     private GameObject CurrentChasis;
 
-    void SelectChasis(Chasis chasis)
+    public void OnClickChasis()
+    {
+        SelectChasis(AvailableChasis[0]);
+    }
+
+    public void OnClickAttachment()
+    {
+        AddAttachment(AvailableAttachments[0]);
+    }
+
+    private void SelectChasis(Chasis chasis)
     {
         if(CurrentChasis)
         {
@@ -19,7 +29,7 @@ public class BuilderController : MonoBehaviour
         this.CurrentChasis = Instantiate(chasis.gameObject);
     }
 
-    void AddAttachment(Attachment attachment)
+    private  void AddAttachment(Attachment attachment)
     {
         if(CurrentChasis)
         {
@@ -35,18 +45,18 @@ public class BuilderController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            Debug.Log("Key code x read");
-            SelectChasis(AvailableChasis[0]);
-        }
+    // void Update()
+    // {
+    //     if(Input.GetKeyDown(KeyCode.X))
+    //     {
+    //         Debug.Log("Key code x read");
+    //         SelectChasis(AvailableChasis[0]);
+    //     }
 
-        if(Input.GetKeyDown(KeyCode.Y))
-        {
-            Debug.Log("Key code Y has been pressed");
-            AddAttachment(AvailableAttachments[0]);
-        }
-    }
+    //     if(Input.GetKeyDown(KeyCode.Y))
+    //     {
+    //         Debug.Log("Key code Y has been pressed");
+    //         AddAttachment(AvailableAttachments[0]);
+    //     }
+    // }
 }
