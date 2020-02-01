@@ -18,6 +18,7 @@ public class Axe : BaseWeapon // Derived class
     // Update is called once per frame
     void Update()
     {
+        attack();
         checkWeaponPosition();
         attackTimeTracker += Time.deltaTime;
     }
@@ -28,14 +29,14 @@ public class Axe : BaseWeapon // Derived class
     public override void attack(){
         if ((attackTimeTracker + Time.deltaTime) > (nextMinAttackTime)){
             //Activated motor to attack, and sets next possible time for an attack
-            hinge.useMotor = true;
+            // hinge.useMotor = true;
             nextMinAttackTime = 0 + attackCooldown;
         }
     }
 
     private void checkWeaponPosition(){
         //Once the axe is past a certain point swap from motor to spring
-        if(hinge.angle >= hinge.limits.max ){
+        if(hinge.angle >= hinge.limits.max  ){
             hinge.useMotor = false;
         }
     }
