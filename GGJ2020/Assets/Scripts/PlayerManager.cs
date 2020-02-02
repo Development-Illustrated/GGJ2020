@@ -18,16 +18,18 @@ public class PlayerManager : NetworkedBehaviour
     [SerializeField] private float maxSpeed = 30f;
     [SerializeField] private float turnSpeed = 2f;
     [SerializeField] private bool debugMeBruda;
-
-    public GameObject camera;
+    [SerializeField] private GameObject followCamera;
+    [SerializeField] private GameObject spectateCamera;
+    [SerializeField] private float deathTimer = 10.0f;
     
     private float groundDistance;
-
     private List<AttachPointSelection> attachPoints;
     private List<BaseWeapon> weaponsList;
+    private bool deathTimerStarted = false;
+    private float _deathTimer = 0f;
 
     private int _health = 100;
-    private playerState _currentState = playerState.IS_IDLE;
+    [SerializeField] private playerState _currentState = playerState.IS_IDLE;
     public int health
     {
         get { return _health; }
@@ -52,6 +54,7 @@ public class PlayerManager : NetworkedBehaviour
         {
             if (_currentState == value) return;
             _currentState = value;
+            Debug.Log("Updated state");
             if (OnStateChange != null)
                 OnStateChange(_currentState);
         }
@@ -69,7 +72,7 @@ public class PlayerManager : NetworkedBehaviour
     {
         if (this.IsLocalPlayer)
         {
-            camera.active = true;
+            followCamera.SetActive(true);
         }
 
         rb = this.GetComponent<Rigidbody>();
@@ -85,7 +88,20 @@ public class PlayerManager : NetworkedBehaviour
 
     void Update()
     {
-        moveInput = controls.PlayerActions.Move.ReadValue<Vector2>();
+        if (currentState != playerState.IS_DEAD)
+            moveInput = controls.PlayerActions.Move.ReadValue<Vector2>();
+
+        if (deathTimerStarted)
+        {
+            _deathTimer += Time.deltaTime;
+
+            if (_deathTimer >= deathTimer)
+            {
+                deathTimerStarted = false;
+                _deathTimer = deathTimer;
+                killPlayer();
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -150,13 +166,23 @@ public class PlayerManager : NetworkedBehaviour
 
     private void killPlayer()
     {
-        currentState = playerState.IS_DEAD;
+        if (this.IsLocalPlayer)
+        {
+            health = 0;
+            currentState = playerState.IS_DEAD;
+        }
     }
 
     private void Move(Vector2 moveInput)
     {
         if(IsGrounded())
         {
+            if (deathTimerStarted)
+            {
+                deathTimerStarted = false;
+                _deathTimer = 0f;
+            }
+
             // Forward/Backward
             if(rb.velocity.magnitude < maxSpeed)
             {
@@ -167,7 +193,11 @@ public class PlayerManager : NetworkedBehaviour
         }
         else
         {
-            if(debugMeBruda)Debug.Log("Not grounded!");
+            if(debugMeBruda) Debug.Log("Not grounded!");
+            if (!deathTimerStarted)
+            {
+                deathTimerStarted = true;
+            }
         }
     }
 
@@ -197,7 +227,8 @@ public class PlayerManager : NetworkedBehaviour
 
     private void Awake()
     {
-        camera.active = false;
+        spectateCamera.SetActive(false);
+        followCamera.SetActive(false);
         controls = new PlayerInputActions();
     }
 

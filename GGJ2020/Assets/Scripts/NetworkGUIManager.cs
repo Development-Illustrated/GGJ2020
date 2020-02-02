@@ -7,12 +7,11 @@ using MLAPI.Transports.UNET;
 
 public class NetworkGUIManager : MonoBehaviour
 {
-    public InputField hostAddress;
-    public Button joinButton;
-    public Button hostButton;
-    public Camera menuCamera;
-
-    public BuilderController builderController;
+    [SerializeField] private InputField hostAddress;
+    [SerializeField] private Button joinButton;
+    [SerializeField] private Button hostButton;
+    [SerializeField] private Camera menuCamera;
+    
 
     void Start()
     {
