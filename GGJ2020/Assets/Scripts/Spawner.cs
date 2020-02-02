@@ -7,9 +7,9 @@ public class Spawner : MonoBehaviour
     public GameObject spawnee;
     public bool stopSpawning = false;
     public float spawnTime;
-    private float spawnDelay = 0.1f;
-    public float thrust;
-    public float speed;
+    [SerializeField] private float spawnDelay = 1f;
+    public float thrust = 100f;
+    public float speed = 10f;
 
     private float ySpeed = 100.0f;
     private GameObject[] CannonBalls = new GameObject[30];
@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("RUNNING YO");
         InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
         for (int i = 0; i < CannonBalls.Length; i++) {
 			CannonBalls[i] = null;
@@ -25,13 +26,15 @@ public class Spawner : MonoBehaviour
     }
 
     public void SpawnObject() {
+        Debug.Log("Spawning yo");
         GameObject newBall = Instantiate(spawnee, transform.position, transform.rotation);
         newBall.GetComponent<Renderer>().material.SetColor("_Color", Random.ColorHSV());
 
-        Rigidbody newBallRB = newBall.GetComponent<Rigidbody>(); 
+        Debug.DrawRay(transform.position, transform.forward);
+        Rigidbody newBallRB = newBall.GetComponent<Rigidbody>();
+        newBallRB.mass = Random.Range(1.0f, 100.0f);
         newBallRB.AddForce(transform.forward * thrust, ForceMode.Impulse);
         newBallRB.AddForce(transform.up * (Random.Range(-40.0f, 5.0f)), ForceMode.Impulse);
-        newBallRB.mass = Random.Range(1.0f, 100.0f);
 
         ArrayIndex++;
         if (ArrayIndex + 1 > CannonBalls.Length)

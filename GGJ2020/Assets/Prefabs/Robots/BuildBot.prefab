@@ -26,8 +26,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175223949}
-  m_LocalRotation: {x: 0.22975293, y: -0.000000018722726, z: 0.0000000044199404, w: 0.973249}
-  m_LocalPosition: {x: 0, y: 5, z: -10}
+  m_LocalRotation: {x: 0.22939283, y: 0.0002834159, z: -0.00006679474, w: 0.9733339}
+  m_LocalPosition: {x: -0.0010959523, y: 1.274993, z: -2.5534668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 980936847}
@@ -143,7 +143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346381435}
-  m_LocalRotation: {x: 0.22975293, y: -0.000000018722726, z: 0.0000000044199404, w: 0.973249}
+  m_LocalRotation: {x: 0.2293929, y: 0.00028343877, z: -0.00006680013, w: 0.9733339}
   m_LocalPosition: {x: 0, y: 5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -743,7 +743,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 7, z: 91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1995511729140439601}
+  - {fileID: 613222305026415845}
   - {fileID: 980936847}
   - {fileID: 8987871053460242642}
   - {fileID: 8819042983141769581}
@@ -779,10 +779,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db129582dad4416b85bc2477370fc11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentChasis: {fileID: 7456900649249593102}
+  CurrentChasis: {fileID: 613222305026416047}
   groundLayers:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 6145
   movementAcceleration: 800
   maxSpeed: 25
   turnSpeed: 2
@@ -949,7 +949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6ff4bbbd3522433786d35964c20d0c4, type: 3}
---- !u!114 &7456900649249593102 stripped
+--- !u!114 &613222305026416047 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8070065489110682518, guid: f6ff4bbbd3522433786d35964c20d0c4,
     type: 3}
@@ -961,7 +961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870d93ae84046432685c17e5a4d210dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1995511729140439601 stripped
+--- !u!4 &613222305026415845 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1383697139757516457, guid: f6ff4bbbd3522433786d35964c20d0c4,
     type: 3}
