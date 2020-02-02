@@ -68,10 +68,13 @@ public class PlayerManager : NetworkedBehaviour
         {
             camera.active = true;
         }
+
         rb = this.GetComponent<Rigidbody>();
         groundDistance = GetComponentInChildren<Collider>().bounds.extents.y;
         attachPoints = this.GetComponent<Chasis>().AvailableAttachPoints;
-        foreach(AttachPointSelection attachPoint in attachPoints){
+
+        foreach(AttachPointSelection attachPoint in attachPoints)
+        {
             if(attachPoint.GetComponent<AttachPointSelection>())
             {
                 weaponsList.Add(attachPoint.GetComponent<AttachPointSelection>().attachment.GetComponent<BaseWeapon>());
@@ -82,16 +85,13 @@ public class PlayerManager : NetworkedBehaviour
     void Update()
     {
         moveInput = controls.PlayerActions.Move.ReadValue<Vector2>();
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            takeDamage(1);
-        }
     }
 
     private void FixedUpdate()
     {
         Move(moveInput);
     }
+
     public void OnWeapons(){
         Debug.Log("Attack with weapon 1 ");
         BaseWeapon weapon = getWeapon(0);
