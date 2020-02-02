@@ -167,13 +167,10 @@ public class PlayerManager : NetworkedBehaviour
 
     private void killPlayer()
     {
-        health = 0;
-        currentState = playerState.IS_DEAD;
-
         if (this.IsLocalPlayer)
         {
-            //followCamera.SetActive(false);
-            //spectateCamera.SetActive(true);
+            health = 0;
+            currentState = playerState.IS_DEAD;
         }
     }
 
