@@ -29,7 +29,8 @@ public class BuilderController : MonoBehaviour
         // CinemachineTransposer transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
         // transposer.m_FollowOffset.z = 10;
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        buildGui.SetActive(true);        
+        buildGui.SetActive(true);
+        player.currentState = PlayerManager.playerState.IS_BUILDING;        
     }
     public void DisableBuildMode()
     {
@@ -37,6 +38,7 @@ public class BuilderController : MonoBehaviour
         // transposer.m_FollowOffset.z = 10;
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         buildGui.SetActive(false);
+        player.currentState = PlayerManager.playerState.IS_READY;        
     }
 
     public void OnClickChasis()

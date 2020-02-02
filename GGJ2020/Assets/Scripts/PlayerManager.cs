@@ -29,7 +29,7 @@ public class PlayerManager : NetworkedBehaviour
     private float _deathTimer = 0f;
 
     private int _health = 100;
-    [SerializeField] private playerState _currentState = playerState.IS_IDLE;
+    [SerializeField] private playerState _currentState = playerState.IS_BUILDING;
     public int health
     {
         get { return _health; }
@@ -61,6 +61,7 @@ public class PlayerManager : NetworkedBehaviour
     }
     public enum playerState
     {
+        IS_BUILDING,
         IS_IDLE,
         IS_READY,
         IS_DEAD,
@@ -193,10 +194,13 @@ public class PlayerManager : NetworkedBehaviour
         }
         else
         {
-            if(debugMeBruda) Debug.Log("Not grounded!");
-            if (!deathTimerStarted)
+            if(currentState != playerState.IS_BUILDING)
             {
-                deathTimerStarted = true;
+                if(debugMeBruda) Debug.Log("Not grounded!");
+                if (!deathTimerStarted)
+                {
+                    deathTimerStarted = true;
+                }
             }
         }
     }
