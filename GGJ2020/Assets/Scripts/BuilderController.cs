@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
-public class BuilderController : MonoBehaviour
+using MLAPI;
+public class BuilderController : NetworkedBehaviour
 {
     [SerializeField] public List<Attachment> AvailableAttachments;
     [SerializeField] public List<Chasis> AvailableChasis;
@@ -26,19 +26,26 @@ public class BuilderController : MonoBehaviour
 
     public void EnableBuildMode()
     {
-        // CinemachineTransposer transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
-        // transposer.m_FollowOffset.z = 10;
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        buildGui.SetActive(true);
-        player.currentState = PlayerManager.playerState.IS_BUILDING;        
+
+        if(this.IsLocalPlayer)
+        {
+            // CinemachineTransposer transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+            // transposer.m_FollowOffset.z = 10;
+            player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            buildGui.SetActive(true);
+            player.currentState = PlayerManager.playerState.IS_BUILDING; 
+        }
     }
     public void DisableBuildMode()
     {
-        // var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
-        // transposer.m_FollowOffset.z = 10;
-        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        buildGui.SetActive(false);
-        player.currentState = PlayerManager.playerState.IS_READY;        
+        if(this.IsLocalPlayer)
+        {
+            // var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+            // transposer.m_FollowOffset.z = 10;
+            player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            buildGui.SetActive(false);
+            player.currentState = PlayerManager.playerState.IS_READY;   
+        }     
     }
 
     public void OnClickChasis()
