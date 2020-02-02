@@ -16,7 +16,5 @@ public class BallSpawner : MonoBehaviour
             newBall.GetComponent<Renderer>().material.SetColor("_Color", Random.ColorHSV());
             ballNumber -= 1;
         }
-
     }
-
 }

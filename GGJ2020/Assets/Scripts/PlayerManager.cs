@@ -11,6 +11,7 @@ public class PlayerManager : NetworkedBehaviour
 
     public delegate void OnStateChangeDelegate(playerState state);
     public event OnStateChangeDelegate OnStateChange;
+    [SerializeField] public Chasis CurrentChasis;
 
     [SerializeField] LayerMask groundLayers;
     [SerializeField] private float movementAcceleration = 20f;
@@ -19,6 +20,7 @@ public class PlayerManager : NetworkedBehaviour
     [SerializeField] private bool debugMeBruda;
 
     public GameObject camera;
+    
     private float groundDistance;
 
     private List<AttachPointSelection> attachPoints;
@@ -70,13 +72,13 @@ public class PlayerManager : NetworkedBehaviour
         }
         rb = this.GetComponent<Rigidbody>();
         groundDistance = GetComponentInChildren<Collider>().bounds.extents.y;
-        attachPoints = this.GetComponent<Chasis>().AvailableAttachPoints;
-        foreach(AttachPointSelection attachPoint in attachPoints){
-            if(attachPoint.GetComponent<AttachPointSelection>())
-            {
-                weaponsList.Add(attachPoint.GetComponent<AttachPointSelection>().attachment.GetComponent<BaseWeapon>());
-            } 
-        }
+        attachPoints = CurrentChasis.GetComponent<Chasis>().AvailableAttachPoints;
+        // foreach(AttachPointSelection attachPoint in attachPoints){
+        //     if(attachPoint.GetComponent<AttachPointSelection>())
+        //     {
+        //         weaponsList.Add(attachPoint.GetComponent<AttachPointSelection>().attachment.GetComponent<BaseWeapon>());
+        //     } 
+        // }
     }
     
     void Update()
