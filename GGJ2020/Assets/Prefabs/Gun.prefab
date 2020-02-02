@@ -1085,6 +1085,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1109421253074463968}
   - component: {fileID: 8330722309890853667}
+  - component: {fileID: -7027265367969703538}
+  - component: {fileID: 6338469048284332979}
+  - component: {fileID: 3714626542798932115}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -1123,3 +1126,74 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-7027265367969703538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093826838519646571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c527080cfe04704a72515837a6d376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponHealth: 100
+  weight: 3
+  damage: 10
+  nextMinAttackTime: 0
+  attackTimeTracker: 0
+  attackCooldown: 2
+  ammo: {fileID: 7216129657748868539, guid: c68d3029242594e85aa963dbc0a2df8d, type: 3}
+  ammoCount: 3
+  currentAmmo: 3
+  reloadSpeed: 3
+--- !u!59 &6338469048284332979
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093826838519646571}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 20.341366, y: 2, z: 14.683194}
+  m_UseSpring: 0
+  m_Spring:
+    spring: 0
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 0
+  m_Limits:
+    min: 0
+    max: 0
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!114 &3714626542798932115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093826838519646571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f17a5acd5214542ff96cd9926f41f580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachPoint: {fileID: 0}
+  postSpawnRotation: {x: 0, y: 0, z: 0}
