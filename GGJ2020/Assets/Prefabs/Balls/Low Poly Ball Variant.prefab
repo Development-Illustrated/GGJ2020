@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8634220852971527518}
   - component: {fileID: 8293399025803163910}
   - component: {fileID: 2446555415463664125}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Low Poly Ball Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
