@@ -40,7 +40,7 @@ public class PlayerManager : NetworkedBehaviour
         }
     }
     [SerializeField] private int maxHealth = 100;
-    
+
     private Rigidbody rb;
     private PlayerInputActions controls = null;
     private Vector2 moveInput;
@@ -63,13 +63,15 @@ public class PlayerManager : NetworkedBehaviour
         IS_DEAD,
         IS_ATTACKING
     }
-
+    public int collisionDamageThreshold = 10;
+    public int baseCollisionDamageMultiplier = 1;
     private void Start()
     {
         if (this.IsLocalPlayer)
         {
             camera.active = true;
         }
+
         rb = this.GetComponent<Rigidbody>();
         groundDistance = GetComponentInChildren<Collider>().bounds.extents.y;
         attachPoints = CurrentChasis.GetComponent<Chasis>().AvailableAttachPoints;
@@ -80,20 +82,17 @@ public class PlayerManager : NetworkedBehaviour
         //     } 
         // }
     }
-    
+
     void Update()
     {
         moveInput = controls.PlayerActions.Move.ReadValue<Vector2>();
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            takeDamage(1);
-        }
     }
 
     private void FixedUpdate()
     {
         Move(moveInput);
     }
+
     public void OnWeapons(){
         Debug.Log("Attack with weapon 1 ");
         BaseWeapon weapon = getWeapon(0);
@@ -125,6 +124,7 @@ public class PlayerManager : NetworkedBehaviour
 
     public void takeDamage(int damage)
     {
+        Debug.Log("Collision damage: " + damage);
         if (health - damage <= 0)
         {
             health = 0;
@@ -168,6 +168,22 @@ public class PlayerManager : NetworkedBehaviour
         else
         {
             if(debugMeBruda)Debug.Log("Not grounded!");
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        var damageMultiplier = baseCollisionDamageMultiplier;
+        if (collision.gameObject.tag != "Player") {
+            var collisionRB = collision.gameObject.GetComponent<Rigidbody>();
+            if (collisionRB != null) {
+                damageMultiplier = Mathf.RoundToInt(collisionRB.mass);
+            }
+        }
+
+        var collisionMomentum = Mathf.RoundToInt(collision.relativeVelocity.magnitude) * damageMultiplier;
+        if (collisionMomentum >= collisionDamageThreshold) {
+            takeDamage(Mathf.RoundToInt(collisionMomentum / 5));
         }
     }
 
