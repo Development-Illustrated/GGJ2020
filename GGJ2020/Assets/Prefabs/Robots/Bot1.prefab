@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175223949}
-  m_LocalRotation: {x: 0.22975293, y: -0.00000073651046, z: 0.0000031947993, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: -0.0000007739559, z: 0.000003203639, w: 0.973249}
   m_LocalPosition: {x: 0, y: 5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -143,7 +143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346381435}
-  m_LocalRotation: {x: 0.22975293, y: -0.00000073651046, z: 0.0000031947993, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: -0.0000007739559, z: 0.000003203639, w: 0.973249}
   m_LocalPosition: {x: 0, y: 5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayers:
     serializedVersion: 2
-    m_Bits: 2147483649
+    m_Bits: 2049
   movementAcceleration: 800
   maxSpeed: 25
   turnSpeed: 2
