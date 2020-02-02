@@ -11,8 +11,6 @@ public class Axe : BaseWeapon // Derived class
         rigidBody = GetComponent<Rigidbody>();
         hinge = GetComponent<HingeJoint>();
         motor = hinge.motor;
-        //TODO: ROBOT CONENCTION POINT
-        // hinge.connectedBody = rigidBody;
     }
 
     // Update is called once per frame

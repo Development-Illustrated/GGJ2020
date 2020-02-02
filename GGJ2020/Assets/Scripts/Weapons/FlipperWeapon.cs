@@ -7,26 +7,34 @@ public class FlipperWeapon : BaseWeapon
     // Start is called before the first frame update
     void Start()
     {   
-        checkWeaponPosition();        
+        rigidBody = GetComponent<Rigidbody>();
+        hinge = GetComponent<HingeJoint>();
+        motor = hinge.motor;
+        checkWeaponPosition(); 
+        this.nextMinAttackTime = 0;     
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        this.attackTimeTracker += Time.deltaTime;
+        checkWeaponPosition();
     }
 
     public override void attack(){
-        if ((attackTimeTracker + Time.deltaTime) > (nextMinAttackTime)){
+        if (this.attackTimeTracker >= this.nextMinAttackTime){
             //Activated motor to attack, and sets next possible time for an attack
-            hinge.useMotor = true;
-            nextMinAttackTime = 0 + attackCooldown;
+            this.hinge.useMotor = true;
+            this.nextMinAttackTime = 0 + attackCooldown;
+            this.attackTimeTracker = 0;
+        } else{
+
         }
     }
     
     private void checkWeaponPosition(){
         //Once the axe is past a certain point swap from motor to spring
-        if(hinge.angle >= hinge.limits.max  ){
+        if(this.hinge.angle >= this.hinge.limits.max  ){
             hinge.useMotor = false;
         }
     }

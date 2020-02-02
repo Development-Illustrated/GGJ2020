@@ -72,14 +72,21 @@ public class PlayerManager : NetworkedBehaviour
         rb = this.GetComponent<Rigidbody>();
         groundDistance = GetComponentInChildren<Collider>().bounds.extents.y;
         attachPoints = this.GetComponent<Chasis>().AvailableAttachPoints;
-
+        Debug.Log(attachPoints);
+        Debug.Log("Number of attachmentPoints: " + attachPoints.Count);
+        weaponsList = new List<BaseWeapon>();
         foreach(AttachPointSelection attachPoint in attachPoints)
         {
-            if(attachPoint.GetComponent<AttachPointSelection>())
-            {
-                weaponsList.Add(attachPoint.GetComponent<AttachPointSelection>().attachment.GetComponent<BaseWeapon>());
+            Debug.Log(attachPoint);
+            if(attachPoint.attachment)
+            {   
+                Debug.Log(attachPoint.attachment);
+                weaponsList.Add(attachPoint.attachment.GetComponent<BaseWeapon>());
             } 
         }
+        Debug.Log("Weapon List");
+        Debug.Log("Weapon list: " + weaponsList);
+        
     }
     
     void Update()
@@ -114,7 +121,7 @@ public class PlayerManager : NetworkedBehaviour
     }
 
     private BaseWeapon getWeapon(int weaponNumber){
-        if(weaponsList.Count <= (attachPoints.Count + 1)){
+        if(weaponNumber <= (weaponsList.Count - 1)){
             return weaponsList[weaponNumber];
         } else {
             return null;

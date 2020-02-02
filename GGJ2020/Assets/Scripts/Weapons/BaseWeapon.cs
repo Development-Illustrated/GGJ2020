@@ -35,7 +35,7 @@ public abstract class BaseWeapon : MonoBehaviour
     // call damage step to networking/Tell object they take X Damage
     public void hitTarget(GameObject hitTarget, double damageToTake){
         //Tell them they got hurt
-        //hitTarget.takeDamage(damageToTake);
+        // hitTarget.takeDamage(damageToTake);
     }
 
 }
