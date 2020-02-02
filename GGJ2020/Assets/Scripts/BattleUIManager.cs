@@ -38,7 +38,7 @@ public class BattleUIManager : NetworkedBehaviour
         // else
         // {
         //     restartGame.GetComponent<Text>().text = "Leave Game";
-        // }
+        // 
     }
 
     // Update is called once per frame

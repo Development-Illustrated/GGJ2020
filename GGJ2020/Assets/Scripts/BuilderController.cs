@@ -22,6 +22,7 @@ public class BuilderController : NetworkedBehaviour
     private PlayerManager player;
     public CinemachineVirtualCamera virtualCamera;
     public GameObject buildGui;
+    public GameObject battleGui;
 
 
     public void EnableBuildMode()
@@ -32,6 +33,7 @@ public class BuilderController : NetworkedBehaviour
             // CinemachineTransposer transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
             // transposer.m_FollowOffset.z = 10;
             player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            battleGui.SetActive(false);
             buildGui.SetActive(true);
             player.currentState = PlayerManager.playerState.IS_BUILDING; 
         }
@@ -43,6 +45,7 @@ public class BuilderController : NetworkedBehaviour
             // var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
             // transposer.m_FollowOffset.z = 10;
             player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            battleGui.SetActive(true);
             buildGui.SetActive(false);
             player.currentState = PlayerManager.playerState.IS_READY;   
         }     

@@ -108,9 +108,6 @@ public class PlayerManager : NetworkedBehaviour
                 killPlayer();
             }
         }
-        Debug.Log("Weapon List");
-        Debug.Log("Weapon list: " + weaponsList);
-        
     }
 
     private void FixedUpdate()
