@@ -18,9 +18,9 @@ public class SpikeCollection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stab && transform.position.y <= -0.5f)
+        if (stab && transform.localPosition.y <= -0.7f)
             transform.Translate (Vector3.up * raiseSpeed * Time.deltaTime);
-        else if (transform.position.y >= -2f)
+        else if (!stab && transform.localPosition.y >= - 3f)
             transform.Translate (-Vector3.up * lowerSpeed * Time.deltaTime);
     }
 

@@ -14,11 +14,13 @@ public class Attachment : MonoBehaviour
         Quaternion target = Quaternion.Euler(postSpawnRotation);
         transform.rotation = target;
 
-        attachPoint.GetComponent<MeshRenderer>().enabled = false;
+        // attachPoint.GetComponent<MeshRenderer>().enabled = false;
 
         if(GetComponent<HingeJoint>() != null)
         {
+            Debug.Log("Attaching hinge joint");
             GetComponent<HingeJoint>().connectedAnchor = attachPoint.position;
+            GetComponent<HingeJoint>().connectedBody = transform.root.GetComponent<Rigidbody>();
         }
     }
 }
