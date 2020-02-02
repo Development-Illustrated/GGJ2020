@@ -35,7 +35,6 @@ public class Spawner : MonoBehaviour
         void FixedUpdate()
     {
         //Debug.Log(Time.deltaTime);
-        Debug.Log(transform.rotation.y);
         if (System.Math.Abs(transform.rotation.y) > 0.08){
             speed = -speed;
         }
