@@ -1298,6 +1298,7 @@ GameObject:
   - component: {fileID: 5884543914899459346}
   - component: {fileID: 1721856829307353175}
   - component: {fileID: 6419464327078379174}
+  - component: {fileID: 4366344990327780867}
   - component: {fileID: 1299720588846037419}
   m_Layer: 0
   m_Name: Arena 1
@@ -1374,6 +1375,24 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4366344990327780867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6932423293685752416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61740e191ecffb24dad538eebdda5146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnee: {fileID: 0}
+  stopSpawning: 0
+  spawnTime: 0
+  spawnDelay: 0
+  thrust: 0
+  speed: 0
 --- !u!114 &1299720588846037419
 MonoBehaviour:
   m_ObjectHideFlags: 0
