@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1326401621010814207}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DropPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5005135091601124214}
   - component: {fileID: 7109124503538694156}
   - component: {fileID: 1302353886636510042}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1467,13 +1467,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 326457741706512632, guid: 9b558cb4c583145f5bbac8abb27d5dca,
         type: 3}
-      propertyPath: m_UseMotor
-      value: 0
+      propertyPath: m_LocalPosition.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 326457741706512632, guid: 9b558cb4c583145f5bbac8abb27d5dca,
         type: 3}
-      propertyPath: m_Limits.max
-      value: 100
+      propertyPath: m_LocalPosition.z
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 326457741706512632, guid: 9b558cb4c583145f5bbac8abb27d5dca,
         type: 3}
