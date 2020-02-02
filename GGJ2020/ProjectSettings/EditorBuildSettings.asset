@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/NetworkBitchin.unity
-    guid: 64ae3bbe94f30404987bbea8c7dff78a
+    path: Assets/Scenes/BattleScene.unity
+    guid: 4f7e2b2b24a5044caa0378daef700b18
   m_configObjects: {}

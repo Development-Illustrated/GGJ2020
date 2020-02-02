@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 935766327590985342}
   - component: {fileID: 3361651410093779524}
   m_Layer: 11
-  m_Name: Low Poly Ball (1)
+  m_Name: Low Poly Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2244,7 +2244,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411069359254458060}
   serializedVersion: 2
-  m_Mass: 0.2
+  m_Mass: 0.0000001
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
