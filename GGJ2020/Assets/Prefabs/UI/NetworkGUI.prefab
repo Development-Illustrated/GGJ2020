@@ -392,6 +392,7 @@ MonoBehaviour:
   joinButton: {fileID: 8151629683177466312}
   hostButton: {fileID: 8151629681499051843}
   menuCamera: {fileID: 0}
+  builderController: {fileID: 0}
 --- !u!1 &8151629682979517529
 GameObject:
   m_ObjectHideFlags: 0

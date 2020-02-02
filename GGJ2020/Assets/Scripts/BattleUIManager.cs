@@ -31,14 +31,14 @@ public class BattleUIManager : NetworkedBehaviour
         restartGame.onClick.AddListener(restartScene);
 
 
-        if (NetworkingManager.Singleton.IsHost)
-        {
-            restartGame.GetComponent<Text>().text = "End Game";
-        }
-        else
-        {
-            restartGame.GetComponent<Text>().text = "Leave Game";
-        }
+        // if (NetworkingManager.Singleton.IsHost)
+        // {
+        //     restartGame.GetComponent<Text>().text = "End Game";
+        // }
+        // else
+        // {
+        //     restartGame.GetComponent<Text>().text = "Leave Game";
+        // }
     }
 
     // Update is called once per frame

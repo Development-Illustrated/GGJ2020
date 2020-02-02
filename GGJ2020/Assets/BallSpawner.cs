@@ -20,7 +20,5 @@ public class BallSpawner : MonoBehaviour
             newBall.GetComponent<Transform>().localScale = new Vector3(Scale,Scale,Scale);
             ballNumber -= 1;
         }
-
     }
-
 }
